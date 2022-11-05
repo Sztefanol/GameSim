@@ -16,39 +16,5 @@ public class GameBoardManager {
 
   }
 
-  public boolean isMoveValid(int x, int y) {
-    return gameBoard.getBoard()[x][y] == GameBoardSymbols.EMPTY;
-  }
-
-  public boolean isWinningMove(int x, int y, GameBoardSymbols symbol) {
-    return isWinningRow(x, symbol) || isWinningColumn(y, symbol) || isWinningDiagonal(symbol);
-  }
-
-  private boolean isWinningRow(int x, GameBoardSymbols symbol) {
-    for (int i = 0; i < gameBoard.getSize(); i++) {
-      if (gameBoard.getBoard()[x][i] != symbol) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  private boolean isWinningColumn(int y, GameBoardSymbols symbol) {
-    for (int i = 0; i <= gameBoard.getSize(); i++) {
-      if (gameBoard.getBoard()[i][y] != symbol) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  private boolean isWinningDiagonal(GameBoardSymbols symbol) {
-    for (int i = 0; i <= gameBoard.getSize(); i++) {
-      if (gameBoard.getBoard()[i][i] != symbol || gameBoard.getBoard()[i][gameBoard.getSize() - i] != symbol) {
-        return false;
-      }
-    }
-    return true;
-  }
 
 }
