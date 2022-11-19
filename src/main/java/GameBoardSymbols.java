@@ -1,3 +1,3 @@
 public enum GameBoardSymbols {
-  EMPTY, CROSS, CIRCLE
+  EMPTY, CIRCLE, CROSS
 }
