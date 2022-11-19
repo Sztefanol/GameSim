@@ -17,7 +17,7 @@ public class TicTacToeRuleChecker {
   }
 
   private static boolean isWinningColumn(int y, GameBoardSymbols symbol, GameBoard gameBoard) {
-    for (int i = 0; i <= gameBoard.getSize(); i++) {
+    for (int i = 0; i < gameBoard.getSize(); i++) {
       if (gameBoard.getBoard()[i][y] != symbol) {
         return false;
       }
@@ -26,8 +26,8 @@ public class TicTacToeRuleChecker {
   }
 
   private static boolean isWinningDiagonal(GameBoardSymbols symbol, GameBoard gameBoard) {
-    for (int i = 0; i <= gameBoard.getSize(); i++) {
-      if (gameBoard.getBoard()[i][i] != symbol || gameBoard.getBoard()[i][gameBoard.getSize() - i] != symbol) {
+    for (int i = 0; i < gameBoard.getSize(); i++) {
+      if (gameBoard.getBoard()[i][i] != symbol || gameBoard.getBoard()[i][gameBoard.getSize() - 1 - i] != symbol) {
         return false;
       }
     }
