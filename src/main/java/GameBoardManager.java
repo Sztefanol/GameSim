@@ -13,9 +13,9 @@ public class GameBoardManager {
     this.players[1] = player2;
   }
 
-  public void gameStep() {
+  public GameStepResult gameStep() {
     if(gameState != GameState.IN_GAME){
-      return;
+      return GameStepResult.GAME_END;
     }
 
     int[] currentMove = players[currentTurnPlayerNumber - 1].makeMove(gameBoard.getBoard());
@@ -24,22 +24,23 @@ public class GameBoardManager {
     GameBoardSymbols currentPlayerSymbol = GameBoardSymbols.values()[currentTurnPlayerNumber];
 
     if(!TicTacToeRuleChecker.isMoveValid(x, y, gameBoard)) {
-      return;
+      return GameStepResult.ILLEGAL_MOVE;
     }
 
     gameBoard.addMove(x, y, currentPlayerSymbol);
 
     if(TicTacToeRuleChecker.isWinningMove(x, y, currentPlayerSymbol, gameBoard)) {
       gameState = GameState.values()[currentTurnPlayerNumber];
-      return;
+      return GameStepResult.GAME_END;
     }
 
     if(gameBoard.isBoardFull()) {
       gameState = GameState.DRAW;
-      return;
+      return GameStepResult.GAME_END;
     }
 
     switchPlayers();
+    return GameStepResult.MOVE_OK;
   }
 
   private void switchPlayers() {
